@@ -83,7 +83,7 @@ final class GildedRose {
             return true;
         }
 
-        if ($item->name === 'Conjured Mana Cake') {
+        if (0 === strpos($item->name, 'Conjured')) {
             $item->sell_in = $item->sell_in - 1;
 
             if ($item->quality > 0) {
