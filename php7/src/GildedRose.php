@@ -23,30 +23,47 @@ final class GildedRose {
         $item->quality = $item->quality - 1;
     }
 
+    protected function increaseQuality($item) {
+        if ($item->name !== 'Aged Brie' and $item->name !== 'Backstage passes to a TAFKAL80ETC concert') {
+            return;
+        }
+
+        if ($item->quality >= 50) {
+            return;
+        }
+
+        $item->quality = $item->quality + 1;
+
+        $this->applyExtraIncreases($item);
+    }
+
+    protected function applyExtraIncreases($item) {
+        // Item significantly increases in quality as sell-by date approaches
+        if ($item->name != 'Backstage passes to a TAFKAL80ETC concert') {
+            return;
+        }
+
+        if ($item->sell_in >= 11) {
+            return;
+        }
+
+        if ($item->quality < 50) {
+            $item->quality = $item->quality + 1;
+        }
+
+        if ($item->sell_in >= 6) {
+            return;
+        }
+
+        if ($item->quality < 50) {
+            $item->quality = $item->quality + 1;
+        }
+    }
+
     public function updateQuality() {
         foreach ($this->items as $item) {
             $this->reduceQuality($item);
-
-            // Item quality increases to a maximum of 50
-            if ($item->name === 'Aged Brie' or $item->name === 'Backstage passes to a TAFKAL80ETC concert') {
-                if ($item->quality < 50) {
-                    $item->quality = $item->quality + 1;
-
-                    // Item significantly increases in quality as sell-by date approaches
-                    if ($item->name == 'Backstage passes to a TAFKAL80ETC concert') {
-                        if ($item->sell_in < 11) {
-                            if ($item->quality < 50) {
-                                $item->quality = $item->quality + 1;
-                            }
-                        }
-                        if ($item->sell_in < 6) {
-                            if ($item->quality < 50) {
-                                $item->quality = $item->quality + 1;
-                            }
-                        }
-                    }
-                }
-            }
+            $this->increaseQuality($item);
 
             // Item sell-by date approaches, except in a special case
             if ($item->name != 'Sulfuras, Hand of Ragnaros') {
