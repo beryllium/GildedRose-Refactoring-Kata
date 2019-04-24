@@ -32,15 +32,21 @@ class GildedRoseTest extends \PHPUnit\Framework\TestCase {
         // that line of code does not need to exist.
         return [
             'foo'         => ['item' => new Item('foo', 9, 10), 'expected' => 2, 'sell_in' => 9],
-            'Aged Brie'   => ['item' => new Item('Aged Brie', 9, 10), 'expected' => 18, 'sell_in' => 9],
-            'Backstage'   => ['item' => new Item('Backstage passes to a TAFKAL80ETC concert', 9, 10), 'expected' => 30, 'sell_in' => 9],
-            'Backstage2'   => ['item' => new Item('Backstage passes to a TAFKAL80ETC concert', 9, 10), 'expected' => 0, 'sell_in' => 19],
-            'Backstage3'   => ['item' => new Item('Backstage passes to a TAFKAL80ETC concert', 9, 10), 'expected' => 0, 'sell_in' => 19],
-            'Sulfuras1'   => ['item' => new Item('Sulfuras, Hand of Ragnaros', 9, 10), 'expected' => 80, 'sell_in' => 9],
             'aged-foo'    => ['item' => new Item('foo', 3, 14), 'expected' => 1, 'sell_in' => 9],
             'qualityFoo'  => ['item' => new Item('foo', 3, 94), 'expected' => 39, 'sell_in' => 30],
+            'Backstage1'  => ['item' => new Item('Backstage passes to a TAFKAL80ETC concert', 9, 10), 'expected' => 30, 'sell_in' => 9],
+            'Backstage2'  => ['item' => new Item('Backstage passes to a TAFKAL80ETC concert', 9, 10), 'expected' => 0, 'sell_in' => 19],
+            'Backstage3'  => ['item' => new Item('Backstage passes to a TAFKAL80ETC concert', 9, 10), 'expected' => 0, 'sell_in' => 19],
+            'Sulfuras1'   => ['item' => new Item('Sulfuras, Hand of Ragnaros', 9, 10), 'expected' => 80, 'sell_in' => 9],
+            'Aged Brie'   => ['item' => new Item('Aged Brie', 9, 10), 'expected' => 18, 'sell_in' => 9],
             'qualityBrie' => ['item' => new Item('Aged Brie', 3, 94), 'expected' => 94, 'sell_in' => 30],
-            'cheapBrie' => ['item' => new Item('Aged Brie', 3, 3), 'expected' => 50, 'sell_in' => 30],
+            'cheapBrie'   => ['item' => new Item('Aged Brie', 3, 3), 'expected' => 50, 'sell_in' => 30],
+            'conjured1'   => ['item' => new Item('Conjured Mana Cake', 3, 6), 'expected' => 6, 'sell_in' => 0],
+            'conjured2'   => ['item' => new Item('Conjured Mana Cake', 3, 6), 'expected' => 6, 'sell_in' => 1],
+            'conjured3'   => ['item' => new Item('Conjured Mana Cake', 3, 6), 'expected' => 4, 'sell_in' => 2],
+            'conjured4'   => ['item' => new Item('Conjured Mana Cake', 3, 6), 'expected' => 2, 'sell_in' => 3],
+            'conjured5'   => ['item' => new Item('Conjured Mana Cake', 3, 6), 'expected' => 0, 'sell_in' => 4],
+            'conjured6'   => ['item' => new Item('Conjured Mana Cake', 3, 6), 'expected' => 0, 'sell_in' => 30],
         ];
     }
 }
